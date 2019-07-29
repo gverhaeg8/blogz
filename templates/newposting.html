@@ -2,17 +2,17 @@
 
 {% block content %}
 
-    <h1 align=center>Add a Blog Entry</h1>
+    <h1 align=center>Add A New Entry</h1>
 
     <form method='POST'>
-      <label>Title for your new blog: <br/>
+      <label>Title:<br/>
         <input type='text' name='title' value='{{title}}' />
         <span class='error'>{{title_error}}</span>
       </label>
 
       <br/> <br/> <br/> 
       
-      <label>Your new blog:  <br/>
+      <label>Entry:<br/>
         <textarea name='body'>{{body}}</textarea>
         <span class='error'>{{body_error}}</span>
       </label>
@@ -21,5 +21,13 @@
 
       <input type='submit' value='Add Entry' />
     </form>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    <ul>
+    {% for category,message in messages %}
+        <li class="{{category}}">{{message}}</li>
+    {% endfor %}
+    </ul>
+    {% endwith %}
    
 {% endblock %}

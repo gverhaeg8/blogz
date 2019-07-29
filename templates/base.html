@@ -1,18 +1,40 @@
 <!doctype html>
 <html>
+
   <head>
-    <title>build-a-blog</title>
+    <title>Blogz</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <style>
       .error { color: red; }
     </style>
   </head>
+  
   <body>
+    <h1 align=center>Blog</h1>
+    <br>
+    <nav align=center>
+          <a class="btn" type="button" href="/">Home</a>
+          <a class="btn" type="button" href="/blog">Main Blog Page</a>
+          <a class="btn" type="button" href="/newpost">Add An Entry</a>
+          <a class="btn" type="button" href="/login">Login</a>
+          <a class="btn" type="button" href="/logout">Logout</a>
 
-    <div>
-      <a href="/blog">Main Blog Page</a>
-      <a href="/newpost">Add a Blog Entry</a>
-    </div>
+  </nav>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    
     {% block content %}
+
     {% endblock %}
 
   </body>
